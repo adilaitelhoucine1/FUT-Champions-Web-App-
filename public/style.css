@@ -993,4 +993,20 @@ video {
   .max-sm\:w-\[100px\] {
     width: 100px;
   }
+
+  .max-sm\:w-\[130px\] {
+    width: 130px;
+  }
+
+  .max-sm\:w-\[90px\] {
+    width: 90px;
+  }
+
+  .max-sm\:w-\[110px\] {
+    width: 110px;
+  }
+
+  .max-sm\:flex-col {
+    flex-direction: column;
+  }
 }
