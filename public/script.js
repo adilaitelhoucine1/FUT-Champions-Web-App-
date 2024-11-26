@@ -44,40 +44,54 @@ let KICK_goal_stats = document.querySelector(".KICK_goal");
 let RELF_goal_stats = document.querySelector(".RELF_goal");
 let PASS_goal_stats = document.querySelector(".PASS_goal");
 
+
+
+
+
 position.addEventListener("change", () => {
+  
+
+
+  
   if (position.value.endsWith("GB")) {
     statistique_All.style.display = "none";
     Goalkepper_stats.style.display = "block";
 
     AddBtn.addEventListener("click", (e) => {
       e.preventDefault(); 
-
-  
+      let goalkeepers_local = JSON.parse(localStorage.getItem("goalkeepers"));
      
-      Goalkepper_name.textContent = name_input.value.trim();
-      DIV_goal_stats.textContent = diving_stas_input.value || "0";
-      KICK_goal_stats.textContent = kicking_stas_input.value || "0";
-      RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
-      PASS_goal_stats.textContent = Passing_stas_input.value || "0";
-      goalkepper_image.src=player_image_input.value;
-
-     
-      let goalkeeper = {
-        role:"goalkeeper",
-        image:player_image_input.value,
-        name: name_input.value.trim(),
-        diving: diving_stas_input.value || "0",
-        kicking: kicking_stas_input.value || "0",
-        reflexes: reflexes_stas_input.value || "0",
-        passing: Passing_stas_input.value || "0",
-      };
-
       
-      let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
-      goalkeepers.push(goalkeeper);
-
-  
-      localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
+    //   if(goalkeepers_local.length > 1){
+ 
+    // let test=document.querySelector(".test").textContent;
+    //     test=name_input.value.trim();
+    //   }else{ 
+                Goalkepper_name.textContent = name_input.value.trim();
+                DIV_goal_stats.textContent = diving_stas_input.value || "0";
+                KICK_goal_stats.textContent = kicking_stas_input.value || "0";
+                RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
+                PASS_goal_stats.textContent = Passing_stas_input.value || "0";
+                goalkepper_image.src=player_image_input.value;
+          
+              
+                let goalkeeper = {
+                  role:"goalkeeper",
+                  image:player_image_input.value,
+                  name: name_input.value.trim(),
+                  diving: diving_stas_input.value || "0",
+                  kicking: kicking_stas_input.value || "0",
+                  reflexes: reflexes_stas_input.value || "0",
+                  passing: Passing_stas_input.value || "0",
+                };
+          
+                
+                let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
+                goalkeepers.push(goalkeeper);
+          
+            
+                localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
+      // }
 
 
     });
@@ -89,3 +103,4 @@ position.addEventListener("change", () => {
     Goalkepper_stats.style.display = "none";
   }
 });
+
