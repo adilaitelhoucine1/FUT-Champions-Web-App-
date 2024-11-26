@@ -6,67 +6,47 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[url('../assets/slide4.jpg')] bg-cover bg-no-repeat min-h-screen">
- 
-    <section class="bg-green-950 bg-opacity-65 max-w-full min-h-screen flex justify-center max-md:flex-col gap-24">
-
-
-        <div >
-            <h1 class="bg-gradient-to-r text-[50px] font-extrabold from-gray-700 via-gray-200 to-gray-100 italic inline-block text-transparent bg-clip-text">Ultimate Team</h1>
-
+<body>
+    <div class="player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+            Pelé
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="text-yellow-400">93</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
         </div>
-
-        <div class="flex flex-col justify-center gap-6">
-
-
-            <div class="flex justify-evenly gap-8">
-
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-           
-
-
-
-            </div>
-
-            <div class="flex justify-evenly gap-8">
-
-         
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-
-            </div>
-
-            <div class="flex justify-evenly gap-8">
- 
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-
-            </div>
-
-            <div class="flex justify-evenly gap-8">
-                <img class="w-24" src="../assets/examples/example_1.png" alt="">
-            </div>
-
-
-
         </div>
-
-
-        <div >
-            <h1 class="bg-gradient-to-r text-[50px] font-extrabold from-gray-700 via-gray-200 to-gray-100 italic inline-block text-transparent bg-clip-text">Ultimate Team</h1>
-
-        </div>
-
-
-
-    </section>
-
-
-
-
+      </div>
+      
 </body>
 </html>
