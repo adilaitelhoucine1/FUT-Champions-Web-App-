@@ -1,3 +1,31 @@
+const element = document.querySelector('.banc');
+
+let scrollAnimation=element.animate(
+  [
+    { 
+        transform: 'translateX(100%)' 
+    }, 
+    { 
+        transform: 'translateX(0%)' 
+    } 
+  ],
+
+  {
+    duration: 30000, 
+    iterations: Infinity,
+    easing: 'linear' 
+  }
+);
+element.addEventListener('mouseenter', () => {
+  scrollAnimation.pause();
+});
+
+element.addEventListener('mouseleave', () => {
+  scrollAnimation.play();
+});
+
+
+
 let position = document.querySelector("#position");
 let statistique_All = document.querySelector(".statistique-All");
 let Goalkepper_stats = document.querySelector(".Goalkepper_stats");
