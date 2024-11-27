@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FUT Champions</title>
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body class="bg-[url('../images/5205447.jpg')] bg-cover bg-no-repeat min-h-screen overflow-x-hidden">
 
@@ -21,20 +20,20 @@
                   <!-- Attaques -->
                   <div class="flex justify-center gap-4 flex-wrap">
                       <!-- LW-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="LW player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition" >
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -42,19 +41,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400 " style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -63,20 +62,20 @@
                         </div>
           
                       <!-- ST-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="ST player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition" >
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -84,19 +83,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -105,20 +104,20 @@
                         </div>
           
                       <!-- RW-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="RW player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -126,19 +125,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -149,21 +148,21 @@
           
                   <!-- Midfielders -->
                   <div class="flex justify-center gap-4 flex-wrap">
-                      <!-- CM1-player -->
-                      <div class="player flex flex-col justify-center">
+                      <!-- CAM-player -->
+                      <div class="CAM player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -171,19 +170,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -191,21 +190,21 @@
                           </div>
                         </div>
           
-                      <!-- CM2-player -->
-                      <div class="player flex flex-col justify-center">
+                      <!-- CM-player -->
+                      <div class="CM player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -213,19 +212,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -233,21 +232,21 @@
                           </div>
                         </div>
           
-                      <!-- CM3-player -->
-                      <div class="player flex flex-col justify-center">
+                      <!-- CDM-player -->
+                      <div class="CDM player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -255,19 +254,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -279,20 +278,20 @@
                   <!-- Defenders -->
                   <div class="flex justify-center gap-4">
                       <!-- LB-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="LB player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -300,19 +299,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -320,21 +319,21 @@
                           </div>
                         </div>
           
-                      <!-- CB-player -->
-                      <div class="player flex flex-col justify-center">
+                      <!-- CB-5-player -->
+                      <div class="CB-5 player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -342,19 +341,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -362,21 +361,21 @@
                           </div>
                         </div>
           
-                      <!-- CB-player -->
-                      <div class="player flex flex-col justify-center">
+                      <!-- CB-4-player -->
+                      <div class="CB-4 player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -384,19 +383,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class=" PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -405,20 +404,20 @@
                         </div>
           
                       <!-- RB-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="RB player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/pelle.jpg" alt="Player">
+                              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
-                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1">
+                            <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
                               Pelé
                             </div>
                             <!-- Player Statistics -->
@@ -426,19 +425,19 @@
                               <div class="grid grid-cols-2 text-center text-xs font-bold">
                                   <div>
                                     
-                                      <span class="text-yellow-400">93</span>
+                                      <span class="PHY_PLYER_STAS text-yellow-400">93</span>
                                       <span style="font-size: 8px;">PHY</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">SHO</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">90</span>
+                                      <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
                                       <span style="font-size: 8px;">PAS</span>
                                   </div>
                                   <div>
-                                      <span class="text-yellow-400" style="font-size: 10px;">95</span>
+                                      <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
                                       <span style="font-size: 8px;">DRI</span>
                                   </div>
                               </div>
@@ -450,17 +449,17 @@
                   <!-- Goalkeeper -->
                   <div class="flex justify-center gap-4 flex-wrap">
                       <!-- GOALKEEPER-player -->
-                      <div class="player flex flex-col justify-center">
+                      <div class="GB player flex flex-col justify-center">
                           <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
                             <!-- Delete Button -->
-                            <button class="absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                            <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
                             <!-- Player Icon -->
                             <div class="flex justify-center mt-6">
-                              <img class="goalkepper-image w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="">
+                              <img class="goalkepper-image w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
                             </div>
                             <!-- Player Name -->
                             <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="Goalkepper_name">
@@ -546,7 +545,8 @@
                           <option value="nothing">-- Sélectionner une position --</option>
                           <option value="GB">(GB)</option>
                           <option value="LB">(LB)</option>
-                          <option value="CB">(CB)</option>
+                          <option value="CB-5">(CB (5))</option>
+                          <option value="CB-4">(CB (4))</option>
                           <option value="RB">(RB)</option>    
                           <option value="CDM">(CDM)</option>
                           <option value="CM">(CM)</option>
@@ -653,7 +653,7 @@
     <!-- banc de joueurs -->
 
     <section>
-      <div class="banc flex  space-x-4 p-4  rounded-lg shadow-lg ">
+      <div class="banc flex  space-x-4 p-4  rounded-lg shadow-lg flex-wrap">
     
         <!-- player 1 -->
           <div class="player flex flex-col justify-center" >
