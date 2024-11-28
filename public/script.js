@@ -83,8 +83,8 @@ AddBtn.addEventListener("click", (e) => {
       const newPlayerCard = document.createElement('div');
       newPlayerCard.className = 'player flex flex-col justify-center';
       newPlayerCard.innerHTML = `
-        <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
-          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+        <div class="banc-player  relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+          <button class="delete-btn btn-test absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -98,7 +98,7 @@ AddBtn.addEventListener("click", (e) => {
           <div class="absolute bottom-6 w-full px-3">
             <div class="grid grid-cols-2 text-center text-xs font-bold">
               <div>
-                <span class="text-yellow-400">${document.querySelector("#Physique").value || "?"}</span>
+                <span class="text-yellow-400">${document.querySelector("#Physique").value || "0"}</span>
                 <span style="font-size: 8px;">PHY</span>
               </div>
               <div>
@@ -165,6 +165,7 @@ AddBtn.addEventListener("click", (e) => {
   document.querySelector("#playerForm").reset();
   statistique_All.style.display = "none";
   Goalkepper_stats.style.display = "none";
+  window.location.reload();
 });
 
 
@@ -254,60 +255,50 @@ window.addEventListener("load", () => {
 });
 
 // btn DELETE
-const deleteButtons = document.querySelectorAll('.delete-btn');
+const deleteButtons = document.querySelectorAll('.delete-btn, .banc .delete-btn');
 
-deleteButtons.forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    const card = this.closest('.player');
+document.addEventListener('click', function(e) {
+  //console.log(e.target);
+  if (e.target.closest('.delete-btn')) {
+    
+    const btn = e.target.closest('.delete-btn');
+    const card = btn.closest('.player');
     const playerPosition = card.classList[0];
     const playerImage = card.querySelector("img");
     const playerName = card.querySelector("#PlayerName") || card.querySelector("#Goalkepper_name");
-     
-    if (card.closest('.banc')) {
-      const playerNameText = card.querySelector("#PlayerName").textContent.trim();
-      
-      console.log("bbanc delete");
-     
-      card.remove();
-      
-      const benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
-      console.log(benchPlayers);
     
+    if (card.closest('.banc')) {
+      const playerNameText = playerName.textContent.trim();
+      let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
       const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerNameText);
       localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
-    }
+      card.remove();
+    } else if (playerPosition === 'GB') {
+      const goalieNameText = playerName.textContent.trim();
+      
+      playerName.textContent = "";
+      playerImage.src = "../images/inconnue.png";
+      card.querySelector(".DIV_goal").textContent = "?";
+      card.querySelector(".RELF_goal").textContent = "?";
+      card.querySelector(".PASS_goal").textContent = "?";
+      card.querySelector(".KICK_goal").textContent = "?";
 
-    if (playerPosition === 'GB') {
-      card.querySelector(".DIV_goal").textContent = "0";
-      card.querySelector(".KICK_goal").textContent = "0";
-      card.querySelector(".RELF_goal").textContent = "0";
-      card.querySelector(".PASS_goal").textContent = "0";
-
-      const goalkeppers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
-      const updatedgolakeppers = goalkeppers.filter(player => player.name !== playerName.textContent);
-      localStorage.setItem("goalkeepers", JSON.stringify(updatedgolakeppers));
-    } else if(!(card.closest('.banc'))) {
+      let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
+      const updatedGoalkeepers = goalkeepers.filter(player => player.name !== goalieNameText);
+      localStorage.setItem("goalkeepers", JSON.stringify(updatedGoalkeepers));
+    } else {
+      const playerNameText = playerName.textContent.trim();
+      
+      playerName.textContent = "";
+      playerImage.src = "../images/inconnue.png";
       const stats = card.querySelectorAll(".PHY_PLYER_STAS, .SHO_PLYER_STAS, .PAS_PLYER_STAS, .DRI_PLYER_STAS");
-      stats.forEach(stat => stat.textContent = "0");
+      stats.forEach(stat => stat.textContent = "?");
 
-      const players = JSON.parse(localStorage.getItem("players")) || [];
-      const updatedPlayers = players.filter(player => player.name !== playerName.textContent);
+      let players = JSON.parse(localStorage.getItem("players")) || [];
+      const updatedPlayers = players.filter(player => player.name !== playerNameText);
       localStorage.setItem("players", JSON.stringify(updatedPlayers));
-      if (playerName) playerName.textContent = "";
-      if (playerImage) playerImage.src = "../images/inconnue.png";
     }
-    // clean les champs 
-    
-    // Si player banc, supprimer la carte
-    // if (card.closest('.banc')) {
-    //   //const playerNameText = playerPosition.textContent;
-    //  console.log(card.querySelector("#PlayerName"));
-    //   //card.remove();
-    //   const benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
-    //   const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerNameText);
-    //   localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
-    // }
-  });
+  }
 });
 
 // let btn_delete_banc=document.querySelectorAll("#delete-btn-banc");
@@ -340,7 +331,7 @@ repmlacer_btn.forEach((btn) => {
       const playercard_rempl = document.createElement('div');
       playercard_rempl.className = 'bench-player-card test cursor-pointer hover:scale-105 transition-transform';
       playercard_rempl.innerHTML = `
-        <div class="banc-player relative w-[130px] h-[180px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+        <div class="banc-player  relative w-[130px] h-[180px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
           <div class="flex justify-center mt-6">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
           </div>
@@ -389,10 +380,7 @@ repmlacer_btn.forEach((btn) => {
         localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
 
         modal.classList.add('hidden');
-
-
-        
-        window.location.reload();
+            window.location.reload();
 
       });
 
@@ -408,5 +396,7 @@ closeModal.addEventListener('click', () => {
   modal.classList.add('hidden');
 });
 
-
-
+document.querySelector(".btn-test").addEventListener("click",()=>{
+  console.log("test");
+  
+})
