@@ -29,6 +29,8 @@ let KICK_goal_stats = document.querySelector(".KICK_goal");
 let RELF_goal_stats = document.querySelector(".RELF_goal");
 let PASS_goal_stats = document.querySelector(".PASS_goal");
 
+let delete_btn=document.querySelectorAll(".delete-btn");
+
 position.addEventListener("change", () => {
   if (position.value.endsWith("GB")) {
     statistique_All.style.display = "none";
@@ -70,17 +72,18 @@ AddBtn.addEventListener("click", (e) => {
     localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
 
   } else if (!position.value.endsWith("nothing")) {
+    
     let className = position.value;
     let playerElement = document.querySelector(`.${className}`);
     const playerName = playerElement.querySelector("#PlayerName");
 
-    if (playerName.textContent !== "") {
+    if (playerName.textContent && playerName.textContent.trim() !== "") {
       // create  banc carte
       const bancSection = document.querySelector('.banc');
       const newPlayerCard = document.createElement('div');
       newPlayerCard.className = 'player flex flex-col justify-center';
       newPlayerCard.innerHTML = `
-        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+        <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
           <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -89,7 +92,7 @@ AddBtn.addEventListener("click", (e) => {
           <div class="flex justify-center mt-6">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player_image_input.value}">
           </div>
-          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1">
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
             ${name_input.value.trim()}
           </div>
           <div class="absolute bottom-6 w-full px-3">
@@ -99,15 +102,15 @@ AddBtn.addEventListener("click", (e) => {
                 <span style="font-size: 8px;">PHY</span>
               </div>
               <div>
-                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Shoting").value || "?"}</span>
+                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Shoting").value || "0"}</span>
                 <span style="font-size: 8px;">SHO</span>
               </div>
               <div>
-                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Passing").value || "?"}</span>
+                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Passing").value || "0"}</span>
                 <span style="font-size: 8px;">PAS</span>
               </div>
               <div>
-                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Dribbling").value || "?"}</span>
+                <span class="text-yellow-400" style="font-size: 10px;">${document.querySelector("#Dribbling").value || "0"}</span>
                 <span style="font-size: 8px;">DRI</span>
               </div>
             </div>
@@ -212,7 +215,7 @@ window.addEventListener("load", () => {
     const newPlayer = document.createElement('div');
     newPlayer.className = 'player flex flex-col justify-center';
     newPlayer.innerHTML = `
-      <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+      <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
         <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -221,7 +224,7 @@ window.addEventListener("load", () => {
         <div class="flex justify-center mt-6">
           <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
         </div>
-        <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1">
+        <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
           ${player.name}
         </div>
         <div class="absolute bottom-6 w-full px-3">
@@ -250,39 +253,160 @@ window.addEventListener("load", () => {
   });
 });
 
-// Gestion des boutons de suppression
-document.addEventListener('click', function(e) {
-  
-  if (e.target.closest('.delete-btn')) {
-    const btn = e.target.closest('.delete-btn');
-    const card = btn.closest('.player');
+// btn DELETE
+const deleteButtons = document.querySelectorAll('.delete-btn');
+
+deleteButtons.forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const card = this.closest('.player');
     const playerPosition = card.classList[0];
-    
     const playerImage = card.querySelector("img");
     const playerName = card.querySelector("#PlayerName") || card.querySelector("#Goalkepper_name");
-    
-    if (playerPosition === 'GB') {
-      // Réinitialisation des stats du gardien
-      card.querySelector(".DIV_goal").textContent = "?";
-      card.querySelector(".KICK_goal").textContent = "?";
-      card.querySelector(".RELF_goal").textContent = "?";
-      card.querySelector(".PASS_goal").textContent = "?";
-    } else {
-      // Réinitialisation des stats des joueurs
-      const stats = card.querySelectorAll(".PHY_PLYER_STAS, .SHO_PLYER_STAS, .PAS_PLYER_STAS, .DRI_PLYER_STAS");
-      stats.forEach(stat => stat.textContent = "?");
-    }
-    
-    if (playerName) playerName.textContent = "";
-    if (playerImage) playerImage.src = "../images/inconnue.png";
-    
-    // Si c'est un joueur du banc, supprimer la carte
+     
     if (card.closest('.banc')) {
+      const playerNameText = card.querySelector("#PlayerName").textContent.trim();
+      
+      console.log("bbanc delete");
+     
       card.remove();
-      // Mettre à jour localStorage
+      
       const benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
-      const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerName.textContent);
+      console.log(benchPlayers);
+    
+      const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerNameText);
       localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
     }
-  }
+
+    if (playerPosition === 'GB') {
+      card.querySelector(".DIV_goal").textContent = "0";
+      card.querySelector(".KICK_goal").textContent = "0";
+      card.querySelector(".RELF_goal").textContent = "0";
+      card.querySelector(".PASS_goal").textContent = "0";
+
+      const goalkeppers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
+      const updatedgolakeppers = goalkeppers.filter(player => player.name !== playerName.textContent);
+      localStorage.setItem("goalkeepers", JSON.stringify(updatedgolakeppers));
+    } else if(!(card.closest('.banc'))) {
+      const stats = card.querySelectorAll(".PHY_PLYER_STAS, .SHO_PLYER_STAS, .PAS_PLYER_STAS, .DRI_PLYER_STAS");
+      stats.forEach(stat => stat.textContent = "0");
+
+      const players = JSON.parse(localStorage.getItem("players")) || [];
+      const updatedPlayers = players.filter(player => player.name !== playerName.textContent);
+      localStorage.setItem("players", JSON.stringify(updatedPlayers));
+      if (playerName) playerName.textContent = "";
+      if (playerImage) playerImage.src = "../images/inconnue.png";
+    }
+    // clean les champs 
+    
+    // Si player banc, supprimer la carte
+    // if (card.closest('.banc')) {
+    //   //const playerNameText = playerPosition.textContent;
+    //  console.log(card.querySelector("#PlayerName"));
+    //   //card.remove();
+    //   const benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+    //   const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerNameText);
+    //   localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
+    // }
+  });
 });
+
+// let btn_delete_banc=document.querySelectorAll("#delete-btn-banc");
+//  console.log(btn_delete_banc);
+  
+// btn_delete_banc.forEach((btn)=>{
+//   btn.addEventListener("click",()=>{
+//     console.log(btn);
+//   })
+// })
+
+// btn REPLACE
+ let repmlacer_btn=document.querySelectorAll(".replace-btn");
+
+const modal = document.getElementById('replacementModal');
+const closeModal = document.getElementById('closeModal');
+const bancplayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+const benchPlayersList = document.getElementById('benchPlayersList');
+
+
+repmlacer_btn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    
+    benchPlayersList.innerHTML = '';
+    modal.classList.remove('hidden');
+
+
+    bancplayers.forEach(player => {
+    
+      const playercard_rempl = document.createElement('div');
+      playercard_rempl.className = 'bench-player-card test cursor-pointer hover:scale-105 transition-transform';
+      playercard_rempl.innerHTML = `
+        <div class="banc-player relative w-[130px] h-[180px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
+          </div>
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">${player.name}</div>
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+              <div><span class="text-yellow-400">${player.physique}</span><span style="font-size: 8px;">PHY</span></div>
+              <div><span class="text-yellow-400">${player.shooting}</span><span style="font-size: 8px;">SHO</span></div>
+              <div><span class="text-yellow-400">${player.passing}</span><span style="font-size: 8px;">PAS</span></div>
+              <div><span class="text-yellow-400">${player.dribbling}</span><span style="font-size: 8px;">DRI</span></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Gérer le clic sur un joueur remplaçant
+      playercard_rempl.addEventListener("click", () => {
+        const originalPlayer = btn.closest('.player');
+        if (!originalPlayer) return;
+
+     
+        const oldName = originalPlayer.querySelector("#PlayerName").textContent.trim();
+        originalPlayer.querySelector("#PlayerName").textContent = player.name;
+        originalPlayer.querySelector("img").src = player.image;
+        originalPlayer.querySelector(".PHY_PLYER_STAS").textContent = player.physique;
+        originalPlayer.querySelector(".SHO_PLYER_STAS").textContent = player.shooting;
+        originalPlayer.querySelector(".PAS_PLYER_STAS").textContent = player.passing;
+        originalPlayer.querySelector(".DRI_PLYER_STAS").textContent = player.dribbling;
+
+  
+        let players = JSON.parse(localStorage.getItem("players")) || [];
+        const playerToUpdate = players.find(p => p.name === oldName);
+        if (playerToUpdate) {
+          playerToUpdate.name = player.name;
+          playerToUpdate.image = player.image;
+          playerToUpdate.physique = player.physique;
+          playerToUpdate.shooting = player.shooting;
+          playerToUpdate.passing = player.passing;
+          playerToUpdate.dribbling = player.dribbling;
+        }
+
+        localStorage.setItem("players", JSON.stringify(players));
+
+     
+        const updatedBenchPlayers = bancplayers.filter(p => p.name !== player.name);
+        localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
+
+        modal.classList.add('hidden');
+
+
+        
+        window.location.reload();
+
+      });
+
+      
+      benchPlayersList.appendChild(playercard_rempl);
+    });
+  });
+
+});
+
+// btn FERMER
+closeModal.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+
+
+

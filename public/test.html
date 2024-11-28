@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M16.056 13.043a1 1 0 0 1-1-1v-.514c0-1.086.644-2.076 1.68-2.583a1.55 1.55 0 0 0 .828-1.773 1.527 1.527 0 0 0-1.148-1.134 1.555 1.555 0 0 0-1.791.912 1 1 0 1 1-1.843-.776 3.568 3.568 0 0 1 4.058-2.09 3.514 3.514 0 0 1 2.674 2.643 3.559 3.559 0 0 1-1.9 4.015c-.35.17-.558.464-.558.786v.513a1 1 0 0 1-1 1z" fill="#000000" opacity="1" data-original="#000000" class=""></path><circle cx="16" cy="15" r="1" fill="#000000" opacity="1" data-original="#000000" class=""></circle><path d="M16 20c-5.514 0-10-4.486-10-10S10.486 0 16 0s10 4.486 10 10-4.486 10-10 10zm0-18c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8z" fill="#000000" opacity="1" data-original="#000000" class=""></path><path d="M28 32H4a1 1 0 0 1-1-1v-4c0-4.962 4.038-9 9-9h8c4.962 0 9 4.038 9 9v4a1 1 0 0 1-1 1zM5 30h22v-3c0-3.86-3.14-7-7-7h-8c-3.86 0-7 3.14-7 7z" fill="#000000" opacity="1" data-original="#000000" class=""></path><path d="M10 32a1 1 0 0 1-1-1v-5a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1zM22 32a1 1 0 0 1-1-1v-5a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1z" fill="#000000" opacity="1" data-original="#000000" class=""></path></g></svg>
+  <div class="CB-5 player flex flex-col justify-center">
+    <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+      <!-- Delete Button -->
+      <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <!-- Player Icon -->
+      <div class="flex justify-center mt-6">
+        <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="">
+      </div>
+      <!-- Player Name -->
+      <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+        Pelé
+      </div>
+      <!-- Player Statistics -->
+      <div class="absolute bottom-6 w-full px-3">
+        <div class="grid grid-cols-2 text-center text-xs font-bold">
+            <div>
+              
+                <span class="PHY_PLYER_STAS text-yellow-400">93</span>
+                <span style="font-size: 8px;">PHY</span>
+            </div>
+            <div>
+                <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
+                <span style="font-size: 8px;">SHO</span>
+            </div>
+            <div>
+                <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">90</span>
+                <span style="font-size: 8px;">PAS</span>
+            </div>
+            <div>
+                <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">95</span>
+                <span style="font-size: 8px;">DRI</span>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
 </body>
 </html>
