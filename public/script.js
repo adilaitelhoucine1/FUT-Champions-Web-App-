@@ -1194,32 +1194,96 @@ position.addEventListener("change", () => {
   }
 });
 
+const bancSection = document.querySelector('.banc');
 
 AddBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
 
-  if (position.value.endsWith("GB")) {
-   
-    Goalkepper_name.textContent = name_input.value.trim();
-    DIV_goal_stats.textContent = diving_stas_input.value || "0";
-    KICK_goal_stats.textContent = kicking_stas_input.value || "0";
-    RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
-    PASS_goal_stats.textContent = Passing_stas_input.value || "0";
-    goalkepper_image.src = player_image_input.value;
+  if (position.value.endsWith("GB") ) {
+    
+    //console.log(Goalkepper_name);
+    
+          if(goalkeepers.length > 0){
 
-    let goalkeeper = {
-      role: "goalkeeper",
-      image: player_image_input.value,
-      name: name_input.value.trim(),
-      diving: diving_stas_input.value || "0",
-      kicking: kicking_stas_input.value || "0",
-      reflexes: reflexes_stas_input.value || "0",
-      passing: Passing_stas_input.value || "0",
-    };
+            const newPlayerCard = document.createElement('div');
+            newPlayerCard.className = 'player flex flex-col justify-center';
+            newPlayerCard.innerHTML = `
+              <div class="banc-player  relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+                <button class="delete-btn btn-test absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <div class="flex justify-center mt-6">
+                  <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player_image_input.value}">
+                </div>
+                <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
+                  ${name_input.value.trim()} 
+                </div>
+                <div class="absolute bottom-6 w-full px-3">
+                  <div class="grid grid-cols-2 text-center text-xs font-bold">
+                    <div>
+                      <span class="text-yellow-400">${diving_stas_input.value || "0"}</span>
+                      <span style="font-size: 8px;">DIV</span>
+                    </div>
+                    <div>
+                      <span class="text-yellow-400" style="font-size: 10px;">${kicking_stas_input.value || "0"}</span>
+                      <span style="font-size: 8px;">KICK</span>
+                    </div>
+                    <div>
+                      <span class="text-yellow-400" style="font-size: 10px;">${reflexes_stas_input.value || "0"}</span>
+                      <span style="font-size: 8px;">RELF</span>
+                    </div>
+                    <div>
+                      <span class="text-yellow-400" style="font-size: 10px;">${Passing_stas_input.value || "0"}</span>
+                      <span style="font-size: 8px;">PASS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            bancSection.appendChild(newPlayerCard);
+      
+            // add banc player to localestorage
+            const benchPlayer = {
+              role: "bench-goalkepper",
+              image: player_image_input.value,
+              name: name_input.value.trim(),
+              physique: Passing_stas_input.value || "0",
+              shooting: kicking_stas_input.value || "0",
+              dribbling: reflexes_stas_input.value || "0",
+              passing: Passing_stas_input.value || "0"
+            };
+      
+            let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+            benchPlayers.push(benchPlayer);
+            localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers));
+      
+            
+          }else if(Goalkepper_name.textContent && Goalkepper_name.textContent.trim() === "" && goalkeepers.length == 0){
+            Goalkepper_name.textContent = name_input.value.trim();
+            DIV_goal_stats.textContent = diving_stas_input.value || "0";
+            KICK_goal_stats.textContent = kicking_stas_input.value || "0";
+            RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
+            PASS_goal_stats.textContent = Passing_stas_input.value || "0";
+            goalkepper_image.src = player_image_input.value;
+        
+            let goalkeeper = {
+              role: "goalkeeper",
+              image: player_image_input.value,
+              name: name_input.value.trim(),
+              diving: diving_stas_input.value || "0",
+              kicking: kicking_stas_input.value || "0",
+              reflexes: reflexes_stas_input.value || "0",
+              passing: Passing_stas_input.value || "0",
+            };
+        
+          
+            goalkeepers.push(goalkeeper);
+            localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
+          }
 
-    let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
-    goalkeepers.push(goalkeeper);
-    localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
 
   } else if (!position.value.endsWith("nothing")) {
     
@@ -1229,7 +1293,7 @@ AddBtn.addEventListener("click", (e) => {
 
     if (playerName.textContent && playerName.textContent.trim() !== "") {
       // create  banc carte
-      const bancSection = document.querySelector('.banc');
+
       const newPlayerCard = document.createElement('div');
       newPlayerCard.className = 'player flex flex-col justify-center';
       newPlayerCard.innerHTML = `
@@ -1378,47 +1442,89 @@ window.addEventListener("load", () => {
   benchPlayers.forEach(player => {
     const newPlayer = document.createElement('div');
     newPlayer.className = 'player flex flex-col justify-center';
-    newPlayer.innerHTML = `
-      <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
-        <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        <div class="flex justify-center mt-6">
-          <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
-        </div>
-        <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
-          ${player.name}
-        </div>
-        <div class="absolute bottom-6 w-full px-3">
-          <div class="grid grid-cols-2 text-center text-xs font-bold">
-            <div>
-              <span class="text-yellow-400">${player.physique}</span>
-              <span style="font-size: 8px;">PHY</span>
-            </div>
-            <div>
-              <span class="text-yellow-400" style="font-size: 10px;">${player.shooting}</span>
-              <span style="font-size: 8px;">SHO</span>
-            </div>
-            <div>
-              <span class="text-yellow-400" style="font-size: 10px;">${player.passing}</span>
-              <span style="font-size: 8px;">PAS</span>
-            </div>
-            <div>
-              <span class="text-yellow-400" style="font-size: 10px;">${player.dribbling}</span>
-              <span style="font-size: 8px;">DRI</span>
+    if(player.role == 'bench'){
+
+      newPlayer.innerHTML = `
+        <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
+          </div>
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
+            ${player.name}
+          </div>
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+              <div>
+                <span class="text-yellow-400">${player.physique}</span>
+                <span style="font-size: 8px;">PHY</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.shooting}</span>
+                <span style="font-size: 8px;">SHO</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.passing}</span>
+                <span style="font-size: 8px;">PAS</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.dribbling}</span>
+                <span style="font-size: 8px;">DRI</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
+    } else if(player.role == 'bench-goalkepper'){
+      newPlayer.innerHTML = `
+        <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
+          </div>
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
+            ${player.name}
+          </div>
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+              <div>
+                <span class="text-yellow-400">${player.physique}</span>
+                <span style="font-size: 8px;">DIV</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.shooting}</span>
+                <span style="font-size: 8px;">KICK</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.passing}</span>
+                <span style="font-size: 8px;">RELF</span>
+              </div>
+              <div>
+                <span class="text-yellow-400" style="font-size: 10px;">${player.dribbling}</span>
+                <span style="font-size: 8px;">PASS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+    }
     bancSection.appendChild(newPlayer);
   });
 });
 
-// btn DELETE
+// btn DELETE / REMPLACE 
 const deleteButtons = document.querySelectorAll('.delete-btn, .banc .delete-btn');
+
+let repmlacer_btn = document.querySelectorAll(".replace-btn");
 
 document.addEventListener('click', function(e) {
   //console.log(e.target);
@@ -1575,7 +1681,7 @@ document.addEventListener('click', function(e) {
 
 
 
-let repmlacer_btn = document.querySelectorAll(".replace-btn");
+
 
 
 const modal = document.getElementById('replacementModal');
