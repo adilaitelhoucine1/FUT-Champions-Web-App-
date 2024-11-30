@@ -1479,6 +1479,7 @@ window.addEventListener("load", () => {
           </div>
         </div>
       `;
+      // met a jour carte en cas de goalkepper
     } else if(player.role == 'bench-goalkepper'){
       newPlayer.innerHTML = `
         <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
