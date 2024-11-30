@@ -1336,6 +1336,7 @@ AddBtn.addEventListener("click", (e) => {
       // add banc player to localestorage
       const benchPlayer = {
         role: "bench",
+        post:position.value,
         image: player_image_input.value,
         name: name_input.value.trim(),
         physique: document.querySelector("#Physique").value || "0",
@@ -1436,13 +1437,18 @@ window.addEventListener("load", () => {
   }
 
   // loading des joueurs du banc
-  const benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+  let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+  let benchPlayers_replaced = JSON.parse(localStorage.getItem("bench-replaced")) || [];
   const bancSection = document.querySelector('.banc');
+  
+  benchPlayers= benchPlayers.concat(benchPlayers_replaced);
+
+
   
   benchPlayers.forEach(player => {
     const newPlayer = document.createElement('div');
     newPlayer.className = 'player flex flex-col justify-center';
-    if(player.role == 'bench'){
+    if(player.role === 'bench'){
 
       newPlayer.innerHTML = `
         <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
@@ -1454,8 +1460,8 @@ window.addEventListener("load", () => {
           <div class="flex justify-center mt-6">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
           </div>
-          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
-            ${player.name}
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" >
+           <span id="PlayerName"> ${player.name} </span> <span class="text-cyan-400" style="font-size: 8px;"> ${player.post}</span>
           </div>
           <div class="absolute bottom-6 w-full px-3">
             <div class="grid grid-cols-2 text-center text-xs font-bold">
@@ -1479,8 +1485,9 @@ window.addEventListener("load", () => {
           </div>
         </div>
       `;
+      bancSection.appendChild(newPlayer);
       // met a jour carte en cas de goalkepper
-    } else if(player.role == 'bench-goalkepper'){
+    } else if(player.role === 'bench-goalkepper'){
       newPlayer.innerHTML = `
         <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
           <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
@@ -1491,8 +1498,8 @@ window.addEventListener("load", () => {
           <div class="flex justify-center mt-6">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
           </div>
-          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
-            ${player.name}
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" >
+            <span id="PlayerName"> ${player.name} </span> <span class="text-green-500" style="font-size: 8px;">(GB)</span>
           </div>
           <div class="absolute bottom-6 w-full px-3">
             <div class="grid grid-cols-2 text-center text-xs font-bold">
@@ -1517,9 +1524,54 @@ window.addEventListener("load", () => {
         </div>
       `;
 
-    }
+      bancSection.appendChild(newPlayer);
+
+    }else{
+
+      newPlayer.innerHTML = `
+      <div class="banc-player relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+        <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="flex justify-center mt-6">
+          <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
+        </div>
+        <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" >
+          <span id="PlayerName"> ${player.name} </span> <span class="text-green-500" style="font-size: 8px;">(Replaced)</span>
+        </div>
+        <div class="absolute bottom-6 w-full px-3">
+          <div class="grid grid-cols-2 text-center text-xs font-bold">
+            <div>
+              <span class="text-yellow-400">${player.physique}</span>
+              <span style="font-size: 8px;">DIV</span>
+            </div>
+            <div>
+              <span class="text-yellow-400" style="font-size: 10px;">${player.shooting}</span>
+              <span style="font-size: 8px;">KICK</span>
+            </div>
+            <div>
+              <span class="text-yellow-400" style="font-size: 10px;">${player.passing}</span>
+              <span style="font-size: 8px;">RELF</span>
+            </div>
+            <div>
+              <span class="text-yellow-400" style="font-size: 10px;">${player.dribbling}</span>
+              <span style="font-size: 8px;">PASS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
     bancSection.appendChild(newPlayer);
+
+
+    }
   });
+
+
+
 });
 
 // btn DELETE / REMPLACE 
@@ -1542,6 +1594,11 @@ document.addEventListener('click', function(e) {
       let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
       const updatedBenchPlayers = benchPlayers.filter(player => player.name !== playerNameText);
       localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
+
+      let benchPlayers_replaed = JSON.parse(localStorage.getItem("bench-replaced")) || [];
+      const updatedBenchPlayers_replaced = benchPlayers_replaed.filter(player => player.name !== playerNameText);
+      localStorage.setItem("bench-replaced", JSON.stringify(updatedBenchPlayers_replaced));
+      
       card.remove();
     } else if (playerPosition === 'GB') {
       const goalieNameText = playerName.textContent.trim();
@@ -1572,11 +1629,15 @@ document.addEventListener('click', function(e) {
   }else if((e.target.closest('.replace-btn'))){
     btn=e.target.closest('.replace-btn');
     
-    benchPlayersList.innerHTML = '';
+   // bancplayers_replaced :   replaced players localesorage
+    
+    // normal players
+    benchPlayersList.innerHTML += '';
     modal.classList.remove('hidden');
 
 
     bancplayers.forEach(player => {
+      // pour afficher bancplayers  f model
       const playercard_rempl = document.createElement('div');
       playercard_rempl.className = 'bench-player-card test cursor-pointer hover:scale-105 transition-transform';
       playercard_rempl.innerHTML = `
@@ -1584,7 +1645,7 @@ document.addEventListener('click', function(e) {
           <div class="flex justify-center mt-6">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
           </div>
-          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">${player.name}</div>
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" >${player.name}</div>
           <div class="absolute bottom-6 w-full px-3">
             <div class="grid grid-cols-2 text-center text-xs font-bold">
               <div><span class="text-yellow-400">${player.physique}</span><span style="font-size: 8px;">PHY</span></div>
@@ -1595,17 +1656,30 @@ document.addEventListener('click', function(e) {
           </div>
         </div>
       `;
+      
+
 
       playercard_rempl.addEventListener("click", () => {
         const originalPlayer = btn.closest('.player');
+      
+        
         if (!originalPlayer) return;
-
+;
         const oldName = originalPlayer.querySelector("#PlayerName").textContent.trim();
         const originalImage = originalPlayer.querySelector("img").src;
         const originalPhysique = originalPlayer.querySelector(".PHY_PLYER_STAS").textContent;
         const originalShooting = originalPlayer.querySelector(".SHO_PLYER_STAS").textContent;
         const originalPassing = originalPlayer.querySelector(".PAS_PLYER_STAS").textContent;
         const originalDribbling = originalPlayer.querySelector(".DRI_PLYER_STAS").textContent;
+        
+        
+
+
+
+
+      // console.log(oldplayer);
+       
+
 
         originalPlayer.querySelector("#PlayerName").textContent = player.name;
         originalPlayer.querySelector("img").src = player.image;
@@ -1615,6 +1689,7 @@ document.addEventListener('click', function(e) {
         originalPlayer.querySelector(".DRI_PLYER_STAS").textContent = player.dribbling;
 
  
+
         const playerToBench = {
           role: originalPlayer.classList[0], 
           image: originalImage,
@@ -1625,25 +1700,13 @@ document.addEventListener('click', function(e) {
           dribbling: originalDribbling
         };
 
-        let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
-        console.log(bancplayers);
-        
-        benchPlayers.push(playerToBench);
 
+        let player_replaed = JSON.parse(localStorage.getItem("bench-replaced")) || [];
+        player_replaed.push(playerToBench);
+        localStorage.setItem("bench-replaced", JSON.stringify(player_replaed));
 
-        // console.log("after",benchPlayers);
-        // console.log("t--",playerToBench);
-        
-        
-        localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers));
+     
 
-        // if( localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers))){
-          
-        //   console.log("added");
-        // }else{
-        //   console.log("error");
-          
-        // }
         
         let players = JSON.parse(localStorage.getItem("players")) || [];
         const playerToUpdate = players.find(p => p.name === oldName);
@@ -1659,6 +1722,7 @@ document.addEventListener('click', function(e) {
         localStorage.setItem("players", JSON.stringify(players));
 
         const updatedBenchPlayers = bancplayers.filter(p => p.name !== player.name);
+       
         localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers));
 
         modal.classList.add('hidden');
@@ -1666,6 +1730,111 @@ document.addEventListener('click', function(e) {
       });
 
       benchPlayersList.appendChild(playercard_rempl);
+
+      
+    });
+
+    // tritement dyal swiched players (li knty derthom f  TEST bash nswitcher bin players li officiel o dyal banc) 
+
+    bancplayers_replaced.forEach(player => {
+      // pour afficher bancplayers  f model
+      const playercard_rempl_replaced = document.createElement('div');
+      playercard_rempl_replaced.className = 'bench-player-card test cursor-pointer hover:scale-105 transition-transform';
+      playercard_rempl_replaced.innerHTML = `
+        <div class="banc-player relative w-[130px] h-[180px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player.image}">
+          </div>
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" >${player.name}</div>
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+              <div><span class="text-yellow-400">${player.physique}</span><span style="font-size: 8px;">PHY</span></div>
+              <div><span class="text-yellow-400">${player.shooting}</span><span style="font-size: 8px;">SHO</span></div>
+              <div><span class="text-yellow-400">${player.passing}</span><span style="font-size: 8px;">PAS</span></div>
+              <div><span class="text-yellow-400">${player.dribbling}</span><span style="font-size: 8px;">DRI</span></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+
+
+      playercard_rempl_replaced.addEventListener("click", () => {
+        const originalPlayer = btn.closest('.player');
+      
+        
+        if (!originalPlayer) return;
+;
+        const oldName = originalPlayer.querySelector("#PlayerName").textContent.trim();
+        const originalImage = originalPlayer.querySelector("img").src;
+        const originalPhysique = originalPlayer.querySelector(".PHY_PLYER_STAS").textContent;
+        const originalShooting = originalPlayer.querySelector(".SHO_PLYER_STAS").textContent;
+        const originalPassing = originalPlayer.querySelector(".PAS_PLYER_STAS").textContent;
+        const originalDribbling = originalPlayer.querySelector(".DRI_PLYER_STAS").textContent;
+        
+        
+
+
+
+
+      // console.log(oldplayer);
+       
+
+
+        originalPlayer.querySelector("#PlayerName").textContent = player.name;
+        originalPlayer.querySelector("img").src = player.image;
+        originalPlayer.querySelector(".PHY_PLYER_STAS").textContent = player.physique;
+        originalPlayer.querySelector(".SHO_PLYER_STAS").textContent = player.shooting;
+        originalPlayer.querySelector(".PAS_PLYER_STAS").textContent = player.passing;
+        originalPlayer.querySelector(".DRI_PLYER_STAS").textContent = player.dribbling;
+
+ 
+
+        const playerToBench = {
+          role: originalPlayer.classList[0], 
+          image: originalImage,
+          name: oldName,
+          physique: originalPhysique,
+          shooting: originalShooting,
+          passing: originalPassing,
+          dribbling: originalDribbling
+        };
+
+
+        let player_replaed_temp = JSON.parse(localStorage.getItem("bench-replaced")) || [];
+        player_replaed_temp.push(playerToBench);
+        localStorage.setItem("bench-replaced", JSON.stringify(player_replaed_temp));
+
+
+     
+
+        
+        let players = JSON.parse(localStorage.getItem("players")) || [];
+        const playerToUpdate = players.find(p => p.name === oldName);
+        if (playerToUpdate) {
+          playerToUpdate.name = player.name;
+          playerToUpdate.image = player.image;
+          playerToUpdate.physique = player.physique;
+          playerToUpdate.shooting = player.shooting;
+          playerToUpdate.passing = player.passing;
+          playerToUpdate.dribbling = player.dribbling;
+        }
+
+        localStorage.setItem("players", JSON.stringify(players));
+
+        const updatedBenchPlayers_temp = bancplayers_replaced.filter(p => p.name !== player.name);
+   
+        localStorage.setItem("benchPlayers", JSON.stringify(updatedBenchPlayers_temp));
+    
+
+        modal.classList.add('hidden');
+        window.location.reload();
+      });
+
+
+
+
+      benchPlayersList.appendChild(playercard_rempl_replaced);
     });
     
   }
@@ -1688,6 +1857,7 @@ document.addEventListener('click', function(e) {
 const modal = document.getElementById('replacementModal');
 const closeModal = document.getElementById('closeModal');
 const bancplayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+const bancplayers_replaced = JSON.parse(localStorage.getItem("bench-replaced")) || [];
 const benchPlayersList = document.getElementById('benchPlayersList');
 
 // apres une erreur lors de changement de formation  ce algo ne fonctione pas
@@ -1796,7 +1966,10 @@ const benchPlayersList = document.getElementById('benchPlayersList');
 // btn FERMER le model
 closeModal.addEventListener('click', () => {
   modal.classList.add('hidden');
+  window.location.reload()
 });
+
+
 
 
 // traitement de changement de formation
@@ -1807,6 +1980,5 @@ let formation_container=document.querySelector(".player-form");
 formation_select.addEventListener("change", () => {
   localStorage.setItem("formation", formation_select.value);
   window.location.reload()
- 
-  
+
 });
