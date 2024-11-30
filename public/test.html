@@ -7,61 +7,580 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 text-white">
-  <div class="GB player flex flex-col justify-center">
-    <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
-      <!-- Delete Button -->
-      <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <!-- Update Button -->
-      <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
-        </svg>
-      </button>
-      <!-- Club Logo -->
-      <div class="absolute  left-2 flex items-center justify-center w-9 h-7  rounded-full max-sm:left-0 max-sm:mt-1 max-sm:mr-5" style="top: 87px;">
-        <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="w-4 h-4" alt="Club Logo">
-      </div>
-      <!-- Flag Logo -->
-      <div class="absolute  right-2 flex items-center justify-center w-9 h-7  rounded-lg max-sm:right-0  max-sm:mt-1 max-sm:ml-6" style="top: 87px;">
-        <img src="https://cdn.sofifa.net/flags/ar.png" class="w-4 h-4" alt="Flag Logo">
-      </div>
-      <!-- Player Icon -->
-      <div class="flex justify-center mt-6">
-        <img class="goalkepper-image w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg " src="../images/inconnue.png" alt="Player Icon">
-      </div>
-      <!-- Player Name -->
-      <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="Goalkepper_name">
-        Test
-      </div>
-      <!-- Player Statistics -->
-      <div class="absolute bottom-6 w-full px-3">
-        <div class="grid grid-cols-2 text-center text-xs font-bold">
-            <div>
-              
-                <span class="PHY_PLYER_STAS text-yellow-400">?</span>
-                <span style="font-size: 8px;">PHY</span>
-            </div>
-            <div>
-                <span class="SHO_PLYER_STAS text-yellow-400 " style="font-size: 10px;">?</span>
-                <span style="font-size: 8px;">SHO</span>
-            </div>
-            <div>
-                <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
-                <span style="font-size: 8px;">PAS</span>
-            </div>
-            <div>
-                <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
-                <span style="font-size: 8px;">DRI</span>
+   <!-- Attaques -->
+   <div class="flex justify-center gap-20 flex-wrap">
+    <!-- LW-player -->
+    <div class="LW player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+           
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400 " style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
             </div>
         </div>
+        </div>
+      </div>
+
+    <!-- ST-player -->
+    <div class="ST player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+            
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+   
+</div>
+
+<!-- Midfielders -->
+<div class="flex justify-center gap-4 flex-wrap">
+    <!-- CAM-player -->
+    <div class="CAM player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+           
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <!-- CM-player -->
+    <div class="CM player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+             <!-- update Button -->
+          </button>
+           <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+            </svg>
+            
+          </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+            
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <!-- CDM-player -->
+    <div class="CDM player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+           
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+       <!-- RW-player -->
+    <div class="RW player flex flex-col justify-center">
+      <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+        <!-- Delete Button -->
+        <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+         <!-- update Button -->
+        </button>
+        <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+           <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+         </svg>
+         
+       </button>
+        <!-- Player Icon -->
+        <div class="flex justify-center mt-6">
+          <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+        </div>
+        <!-- Player Name -->
+        <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+          
+        </div>
+        <!-- Player Statistics -->
+        <div class="absolute bottom-6 w-full px-3">
+          <div class="grid grid-cols-2 text-center text-xs font-bold">
+              <div>
+                
+                  <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                  <span style="font-size: 8px;">PHY</span>
+              </div>
+              <div>
+                  <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                  <span style="font-size: 8px;">SHO</span>
+              </div>
+              <div>
+                  <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                  <span style="font-size: 8px;">PAS</span>
+              </div>
+              <div>
+                  <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                  <span style="font-size: 8px;">DRI</span>
+              </div>
+          </div>
+      </div>
+      </div>
     </div>
-    </div>
-  </div>
-  
+</div>
+
+<!-- Defenders -->
+<div class="flex justify-center gap-4">
+    <!-- LB-player -->
+    <div class="LB player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+            
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <!-- CB-5-player -->
+    <div class="CB-5 player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+            
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <!-- CB-4-player -->
+    <div class="CB-4 player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+            
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class=" PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <!-- RB-player -->
+    <div class="RB player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="PlayerName">
+          
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="PHY_PLYER_STAS text-yellow-400">?</span>
+                    <span style="font-size: 8px;">PHY</span>
+                </div>
+                <div>
+                    <span class="SHO_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">SHO</span>
+                </div>
+                <div>
+                    <span class="PAS_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PAS</span>
+                </div>
+                <div>
+                    <span class="DRI_PLYER_STAS text-yellow-400" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">DRI</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+</div>
+
+<!-- Goalkeeper -->
+<div class="flex justify-center gap-4 flex-wrap">
+    <!-- GOALKEEPER-player -->
+    <div class="GB player flex flex-col justify-center">
+        <div class="relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_total_rush.webp');">
+          <!-- Delete Button -->
+          <button class="delete-btn absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+           <!-- update Button -->
+          </button>
+          <button class="replace-btn absolute top-2 left-1 bg-blue-500 text-white rounded-full p-1 hover:bg-slate-500 transition">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5" />
+             <path stroke-linecap="round" stroke-linejoin="round" d="M5 9a9 9 0 0 1 14 0l-3 3M19 15a9 9 0 0 1-14 0l3-3" />
+           </svg>
+           
+         </button>
+          <!-- Player Icon -->
+          <div class="flex justify-center mt-6">
+            <img class="goalkepper-image w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="../images/inconnue.png">
+          </div>
+          <!-- Player Name -->
+          <div class="absolute bottom-[50px] w-full text-center font-bold text-base	 text-white pb-1" id="Goalkepper_name">
+          
+          </div>
+          <!-- Player Statistics -->
+          <div class="absolute bottom-6 w-full px-3">
+            <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  
+                    <span class="text-yellow-400 DIV_goal">?</span>
+                    <span style="font-size: 8px;">DIV</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400 KICK_goal" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">KICK</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400 RELF_goal" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">RELF</span>
+                </div>
+                <div>
+                    <span class="text-yellow-400 PASS_goal" style="font-size: 10px;">?</span>
+                    <span style="font-size: 8px;">PASS</span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+</div>
+
+
 </body>
 </html>
