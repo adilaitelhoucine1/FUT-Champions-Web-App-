@@ -1372,8 +1372,11 @@ AddBtn.addEventListener("click", (e) => {
   e.preventDefault();
  
   let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
-
-
+if(!(valider(name_input))){
+ alert("test")
+  
+}else{
+console.log(name_input);
 
   if (position.value.endsWith("GB") ) {
     
@@ -2276,12 +2279,63 @@ function valider(text) {
 
 
 
-name_input.addEventListener("input", () => {
-  if (valider(name_input.value)) {
-    name_input.style.borderColor = "green";
-    //errorMessage.classList.add("hidden");
+// Fonction de validation des champs
+function validateInput(input) {
+  const errorMessage = input.nextElementSibling || document.createElement('span');
+
+  if (!valider(input.value.trim())) {
+    input.style.border = '2px solid red';
+    errorMessage.className = 'error-message text-red-500 text-xs mt-1';
+    errorMessage.textContent = 'Ce champ est obligatoire';
+
+    if (!input.nextElementSibling) {
+      input.parentNode.appendChild(errorMessage);
+    }
+    return false;
   } else {
-    name_input.style.borderColor = "red";
-   // errorMessage.classList.remove("hidden");
+    input.style.border = '';
+    if (errorMessage.className.includes('error-message')) {
+      errorMessage.remove();
+    }
+    return true;
+  }
+}
+
+// Ajouter la validation sur les événements input et blur
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', () => validateInput(input));
+  input.addEventListener('blur', () => validateInput(input));
+});
+
+// Validation du formulaire avant soumission
+document.querySelector('form').addEventListener('submit', (e) => {
+  let isValid = true;
+
+  document.querySelectorAll('input').forEach(input => {
+    if (!validateInput(input)) {
+      isValid = false;
+    }
+  });
+
+  if (!isValid) {
+    e.preventDefault();
   }
 });
+
+
+function valider(text) {
+  if (text.length === 0) {
+    return false; 
+  }
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (
+      !(char >= "A" && char <= "Z") &&
+      !(char >= "a" && char <= "z") && 
+      !(char === " ") // Allow spaces
+    ) {
+      return false; 
+    }
+  }
+  return true;
+}
