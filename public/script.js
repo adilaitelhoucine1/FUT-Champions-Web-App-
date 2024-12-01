@@ -2292,7 +2292,7 @@ function validateInput(input) {
 }
 
 // Ajouter la validation sur les événements input et blur
-document.querySelectorAll('input').forEach(input => {
+document.querySelectorAll('.input').forEach(input => {
   input.addEventListener('input', () => validateInput(input));
   input.addEventListener('blur', () => validateInput(input));
 });
@@ -2301,9 +2301,11 @@ document.querySelectorAll('input').forEach(input => {
 document.querySelector('form').addEventListener('submit', (e) => {
   let isValid = true;
 
-  document.querySelectorAll('input').forEach(input => {
+  document.querySelectorAll('.input').forEach(input => {
     if (!validateInput(input)) {
       isValid = false;
+    }else{
+      alert("test")
     }
   });
 
