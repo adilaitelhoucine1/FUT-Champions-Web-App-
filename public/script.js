@@ -2281,22 +2281,12 @@ function valider(text) {
 
 // Fonction de validation des champs
 function validateInput(input) {
-  const errorMessage = input.nextElementSibling || document.createElement('span');
 
   if (!valider(input.value.trim())) {
     input.style.border = '2px solid red';
-    errorMessage.className = 'error-message text-red-500 text-xs mt-1';
-    errorMessage.textContent = 'Ce champ est obligatoire';
-
-    if (!input.nextElementSibling) {
-      input.parentNode.appendChild(errorMessage);
-    }
     return false;
   } else {
-    input.style.border = '';
-    if (errorMessage.className.includes('error-message')) {
-      errorMessage.remove();
-    }
+    input.style.border = '2px solid green';
     return true;
   }
 }
