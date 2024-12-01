@@ -1356,95 +1356,110 @@ position.addEventListener("change", () => {
   }
 });
 
+
+name_input.addEventListener("input", () => {
+  if (valider(name_input.value)) {
+    AddBtn.disabled = false;
+  } else {
+    AddBtn.disabled = true;
+  }
+});
+
+
 const bancSection = document.querySelector('.banc');
 
 AddBtn.addEventListener("click", (e) => {
   e.preventDefault();
+ 
   let goalkeepers = JSON.parse(localStorage.getItem("goalkeepers")) || [];
+
+
 
   if (position.value.endsWith("GB") ) {
     
     //console.log(Goalkepper_name);
-    
-          if(goalkeepers.length > 0){
 
-            const newPlayerCard = document.createElement('div');
-            newPlayerCard.className = 'player flex flex-col justify-center';
-            newPlayerCard.innerHTML = `
-              <div class="banc-player  relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
-                <button class="delete-btn btn-test absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-                <div class="flex justify-center mt-6">
-                  <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player_image_input.value}">
+
+      if(goalkeepers.length > 0 ){
+
+        const newPlayerCard = document.createElement('div');
+        newPlayerCard.className = 'player flex flex-col justify-center';
+        newPlayerCard.innerHTML = `
+          <div class="banc-player  relative w-[130px] h-[180px] max-sm:w-[100px] rounded-[12px] overflow-hidden shadow-lg text-white bg-cover bg-center" style="background-image: url('../assets/examples/badge_ballon_dor.webp');">
+            <button class="delete-btn btn-test absolute top-2 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div class="flex justify-center mt-6">
+              <img class="w-20 h-20 object-cover rounded-full border-2 border-white shadow-lg" src="${player_image_input.value}">
+            </div>
+            <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
+              ${name_input.value.trim()} 
+            </div>
+            <div class="absolute bottom-6 w-full px-3">
+              <div class="grid grid-cols-2 text-center text-xs font-bold">
+                <div>
+                  <span class="text-yellow-400">${diving_stas_input.value || "0"}</span>
+                  <span style="font-size: 8px;">DIV</span>
                 </div>
-                <div class="absolute bottom-[50px] w-full text-center font-bold text-base text-white pb-1" id="PlayerName">
-                  ${name_input.value.trim()} 
+                <div>
+                  <span class="text-yellow-400" style="font-size: 10px;">${kicking_stas_input.value || "0"}</span>
+                  <span style="font-size: 8px;">KICK</span>
                 </div>
-                <div class="absolute bottom-6 w-full px-3">
-                  <div class="grid grid-cols-2 text-center text-xs font-bold">
-                    <div>
-                      <span class="text-yellow-400">${diving_stas_input.value || "0"}</span>
-                      <span style="font-size: 8px;">DIV</span>
-                    </div>
-                    <div>
-                      <span class="text-yellow-400" style="font-size: 10px;">${kicking_stas_input.value || "0"}</span>
-                      <span style="font-size: 8px;">KICK</span>
-                    </div>
-                    <div>
-                      <span class="text-yellow-400" style="font-size: 10px;">${reflexes_stas_input.value || "0"}</span>
-                      <span style="font-size: 8px;">RELF</span>
-                    </div>
-                    <div>
-                      <span class="text-yellow-400" style="font-size: 10px;">${Passing_stas_input.value || "0"}</span>
-                      <span style="font-size: 8px;">PASS</span>
-                    </div>
-                  </div>
+                <div>
+                  <span class="text-yellow-400" style="font-size: 10px;">${reflexes_stas_input.value || "0"}</span>
+                  <span style="font-size: 8px;">RELF</span>
+                </div>
+                <div>
+                  <span class="text-yellow-400" style="font-size: 10px;">${Passing_stas_input.value || "0"}</span>
+                  <span style="font-size: 8px;">PASS</span>
                 </div>
               </div>
-            `;
-            bancSection.appendChild(newPlayerCard);
-      
-            // add banc player to localestorage
-            const benchPlayer = {
-              role: "bench-goalkepper",
-              image: player_image_input.value,
-              name: name_input.value.trim(),
-              physique: Passing_stas_input.value || "0",
-              shooting: kicking_stas_input.value || "0",
-              dribbling: reflexes_stas_input.value || "0",
-              passing: Passing_stas_input.value || "0"
-            };
-      
-            let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
-            benchPlayers.push(benchPlayer);
-            localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers));
-      
-            
-          }else if(Goalkepper_name.textContent && Goalkepper_name.textContent.trim() === "" && goalkeepers.length == 0){
-            Goalkepper_name.textContent = name_input.value.trim();
-            DIV_goal_stats.textContent = diving_stas_input.value || "0";
-            KICK_goal_stats.textContent = kicking_stas_input.value || "0";
-            RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
-            PASS_goal_stats.textContent = Passing_stas_input.value || "0";
-            goalkepper_image.src = player_image_input.value;
+            </div>
+          </div>
+        `;
+        bancSection.appendChild(newPlayerCard);
+  
+        // add banc player to localestorage
+        const benchPlayer = {
+          role: "bench-goalkepper",
+          image: player_image_input.value,
+          name: name_input.value.trim(),
+          physique: Passing_stas_input.value || "0",
+          shooting: kicking_stas_input.value || "0",
+          dribbling: reflexes_stas_input.value || "0",
+          passing: Passing_stas_input.value || "0"
+        };
+  
+        let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
+        benchPlayers.push(benchPlayer);
+        localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers));
+  
         
-            let goalkeeper = {
-              role: "goalkeeper",
-              image: player_image_input.value,
-              name: name_input.value.trim(),
-              diving: diving_stas_input.value || "0",
-              kicking: kicking_stas_input.value || "0",
-              reflexes: reflexes_stas_input.value || "0",
-              passing: Passing_stas_input.value || "0",
-            };
-        
-          
-            goalkeepers.push(goalkeeper);
-            localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
-          }
+      }else if(Goalkepper_name.textContent && Goalkepper_name.textContent.trim() === "" && goalkeepers.length == 0){
+        Goalkepper_name.textContent = name_input.value.trim();
+        DIV_goal_stats.textContent = diving_stas_input.value || "0";
+        KICK_goal_stats.textContent = kicking_stas_input.value || "0";
+        RELF_goal_stats.textContent = reflexes_stas_input.value || "0";
+        PASS_goal_stats.textContent = Passing_stas_input.value || "0";
+        goalkepper_image.src = player_image_input.value;
+    
+        let goalkeeper = {
+          role: "goalkeeper",
+          image: player_image_input.value,
+          name: name_input.value.trim(),
+          diving: diving_stas_input.value || "0",
+          kicking: kicking_stas_input.value || "0",
+          reflexes: reflexes_stas_input.value || "0",
+          passing: Passing_stas_input.value || "0",
+        };
+    
+      
+        goalkeepers.push(goalkeeper);
+        localStorage.setItem("goalkeepers", JSON.stringify(goalkeepers));
+      }
+
 
 
   } else if (!position.value.endsWith("nothing")) {
@@ -1542,7 +1557,8 @@ AddBtn.addEventListener("click", (e) => {
   document.querySelector("#playerForm").reset();
   statistique_All.style.display = "none";
   Goalkepper_stats.style.display = "none";
-  window.location.reload();
+  //window.location.reload();
+}
 });
 
 
@@ -1790,10 +1806,18 @@ document.addEventListener('click', function(e) {
         const updatedPlayers = players.filter(player => player.name !== playerNameText);
         localStorage.setItem("players", JSON.stringify(updatedPlayers));
         
-        setTimeout(() => {
-          alert_suppression.style.display='none'
-        }, 2000);
+    
       }
+      window.scrollTo({
+        top: 0, 
+        left: 0, 
+        behavior: "smooth"
+      });
+
+
+      setTimeout(() => {
+        alert_suppression.style.display='none'
+      }, 2000);
     }
   
     // BTN REMPLACEMENT 
@@ -2234,4 +2258,30 @@ formation_select.addEventListener("change", () => {
   localStorage.setItem("formation", formation_select.value);
   window.location.reload()
 
+});
+
+function valider(text) {
+  if (text.length === 0) {
+    return false;
+  }
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (!(char >= "A" && char <= "Z") && !(char >= "a" && char <= "z")) {
+      return false;
+    }
+  }
+  return true; 
+}
+
+
+
+name_input.addEventListener("input", () => {
+  if (valider(name_input.value)) {
+    name_input.style.borderColor = "green";
+    //errorMessage.classList.add("hidden");
+  } else {
+    name_input.style.borderColor = "red";
+   // errorMessage.classList.remove("hidden");
+  }
 });
