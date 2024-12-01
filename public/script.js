@@ -1357,13 +1357,13 @@ position.addEventListener("change", () => {
 });
 
 
-name_input.addEventListener("input", () => {
-  if (valider(name_input.value)) {
-    AddBtn.disabled = false;
-  } else {
-    AddBtn.disabled = true;
-  }
-});
+// name_input.addEventListener("input", () => {
+//   if (valider(name_input.value)) {
+//     AddBtn.disabled = false;
+//   } else {
+//     AddBtn.disabled = true;
+//   }
+// });
 
 
 const bancSection = document.querySelector('.banc');
@@ -1438,7 +1438,7 @@ console.log(name_input);
         let benchPlayers = JSON.parse(localStorage.getItem("benchPlayers")) || [];
         benchPlayers.push(benchPlayer);
         localStorage.setItem("benchPlayers", JSON.stringify(benchPlayers));
-  
+        
         
       }else if(Goalkepper_name.textContent && Goalkepper_name.textContent.trim() === "" && goalkeepers.length == 0){
         Goalkepper_name.textContent = name_input.value.trim();
@@ -1932,7 +1932,7 @@ document.addEventListener('click', function(e) {
       
     });
 
-    // tritement dyal swiched players (li knty derthom f  TEST bash nswitcher bin players li officiel o dyal banc) 
+    // traitement dyal swiched players (li knty derthom f  TEST bash nswitcher bin players li officiel o dyal banc) 
 
     bancplayers_replaced.forEach(player => {
       // pour afficher bancplayers  f model
