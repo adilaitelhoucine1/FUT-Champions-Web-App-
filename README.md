@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/user/ff52345a-93dc-4f6f-969d-00268863daf7/project/d8ed530d-7599-46ce-8b84-300f65587342.svg)](https://wakatime.com/badge/user/ff52345a-93dc-4f6f-969d-00268863daf7/project/d8ed530d-7599-46ce-8b84-300f65587342)
 # ⚽ FUT Champions Web App Ultimate Team
 
 ## 📝 Description
