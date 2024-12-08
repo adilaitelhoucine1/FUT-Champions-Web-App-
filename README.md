@@ -20,7 +20,7 @@ L'application permettra aux utilisateurs de construire leur équipe FUT (Ultimat
     ```
 2. Naviguer dans le répertoire du projet
     ```bash
-    cd fut-champ
+    cd FUT-Champions-Web-App
     ```
 3. Installer les dépendances (si applicable)
     ```bash
